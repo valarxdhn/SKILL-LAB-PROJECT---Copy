@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VoltCharge | EV Charging</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         FLOATING BACKGROUND ELEMENTS
+    ========================================== -->
+
+    <div class="floating-elements" aria-hidden="true">
+
+        <div class="energy-orb orb-1"></div>
+        <div class="energy-orb orb-2"></div>
+        <div class="energy-orb orb-3"></div>
+
+        <div class="energy-ring ring-1"></div>
+        <div class="energy-ring ring-2"></div>
+
+        <div class="floating-bolt bolt-1">⚡</div>
+        <div class="floating-bolt bolt-2">⚡</div>
+
+        <div class="floating-dot dot-1"></div>
+        <div class="floating-dot dot-2"></div>
+        <div class="floating-dot dot-3"></div>
+        <div class="floating-dot dot-4"></div>
+
+    </div>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            VOLT<span>CHARGE</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#stations">Stations</a>
+            <a href="#bookings">My Bookings</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                ELECTRIC MOBILITY
+            </p>
+
+            <h1>
+                Charge your journey.
+            </h1>
+
+            <p class="hero-text">
+                Discover nearby EV charging stations,
+                check availability and book your charging
+                slot in seconds.
+            </p>
+
+            <a href="#stations" class="primary-button">
+                Find a charger
+                <span class="button-arrow">→</span>
+            </a>
+
+        </div>
+
+
+        <!-- HERO LIVE INDICATOR -->
+
+        <div class="hero-live-card">
+
+            <div class="live-indicator">
+                <span class="live-dot"></span>
+                LIVE NETWORK
+            </div>
+
+            <div class="hero-live-line"></div>
+
+            <p>
+                Charging infrastructure
+                available around you.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         STATIONS
+    ========================================== -->
+
+    <section id="stations" class="section stations-section">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">
+                CHARGING NETWORK
+            </p>
+
+            <h2>
+                Find a charging station
+            </h2>
+
+            <p>
+                Search and filter available EV charging stations.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================
+             LIVE NETWORK STATUS
+        ====================================== -->
+
+        <div class="network-status">
+
+            <div class="network-status-header">
+
+                <div>
+                    <p class="network-label">
+                        LIVE NETWORK
+                    </p>
+
+                    <h3>
+                        Charging infrastructure
+                    </h3>
+                </div>
+
+                <div class="network-live">
+
+                    <span class="live-dot"></span>
+
+                    <span>
+                        LIVE
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="network-stats">
+
+                <!-- STATIONS -->
+
+                <div class="network-stat">
+
+                    <span class="stat-icon">
+                        ◉
+                    </span>
+
+                    <div>
+
+                        <strong id="stationCount">
+                            0
+                        </strong>
+
+                        <span>
+                            Stations online
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AVAILABLE -->
+
+                <div class="network-stat">
+
+                    <span class="stat-icon">
+                        ⚡
+                    </span>
+
+                    <div>
+
+                        <strong id="availableCount">
+                            0
+                        </strong>
+
+                        <span>
+                            Chargers available
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUSY -->
+
+                <div class="network-stat">
+
+                    <span class="stat-icon">
+                        ◌
+                    </span>
+
+                    <div>
+
+                        <strong id="busyCount">
+                            0
+                        </strong>
+
+                        <span>
+                            Stations busy
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LAST UPDATE -->
+
+                <div class="network-stat">
+
+                    <span class="stat-icon">
+                        ↻
+                    </span>
+
+                    <div>
+
+                        <strong id="lastUpdated">
+                            Now
+                        </strong>
+
+                        <span>
+                            Last updated
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             SEARCH
+        ====================================== -->
+
+        <div class="search-tools">
+
+            <div class="search-area">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search station, location or address..."
+                >
+
+                <select id="typeFilter">
+
+                    <option value="all">
+                        All charging types
+                    </option>
+
+                    <option value="DC Fast Charging">
+                        DC Fast Charging
+                    </option>
+
+                    <option value="AC Charging">
+                        AC Charging
+                    </option>
+
+                </select>
+
+
+                <select id="availabilityFilter">
+
+                    <option value="all">
+                        All availability
+                    </option>
+
+                    <option value="Available">
+                        Available
+                    </option>
+
+                    <option value="Busy">
+                        Busy
+                    </option>
+
+                    <option value="Unavailable">
+                        Unavailable
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- FIND NEAR ME -->
+
+            <button
+                type="button"
+                id="nearMeButton"
+                class="near-me-button"
+            >
+
+                <span class="location-icon">
+                    ⌖
+                </span>
+
+                Find near me
+
+            </button>
+
+        </div>
+
+
+        <!-- =====================================
+             LIVE CONNECTION MESSAGE
+        ====================================== -->
+
+        <div
+            id="stationMessage"
+            class="station-message"
+            aria-live="polite"
+        ></div>
+
+
+        <!-- =====================================
+             STATION LOADING
+        ====================================== -->
+
+        <div
+            id="stationLoading"
+            class="station-loading"
+        >
+
+            <div class="loading-animation">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+            <p>
+                Connecting to charging network...
+            </p>
+
+        </div>
+
+
+        <!-- =====================================
+             STATION CARDS
+        ====================================== -->
+
+        <div
+            id="stationContainer"
+            class="station-grid"
+        ></div>
+
+
+        <!-- =====================================
+             EMPTY STATE
+        ====================================== -->
+
+        <div
+            id="emptyStations"
+            class="empty-state"
+            style="display: none;"
+        >
+
+            <div class="empty-icon">
+                ⚡
+            </div>
+
+            <h3>
+                No charging stations found
+            </h3>
+
+            <p>
+                Try changing your search or availability filters.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         BOOKINGS
+    ========================================== -->
+
+    <section
+        id="bookings"
+        class="section bookings-section"
+    >
+
+        <!-- DECORATIVE RADAR -->
+
+        <div
+            class="booking-radar"
+            aria-hidden="true"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div class="section-heading">
+
+            <p class="eyebrow">
+                YOUR CHARGING SESSIONS
+            </p>
+
+            <h2>
+                My bookings
+            </h2>
+
+            <p>
+                View and manage your charging reservations.
+            </p>
+
+        </div>
+
+
+        <!-- BOOKING LIVE BAR -->
+
+        <div class="booking-live-bar">
+
+            <div class="booking-live-status">
+
+                <span class="live-dot"></span>
+
+                <span>
+                    BOOKING NETWORK ACTIVE
+                </span>
+
+            </div>
+
+            <span id="bookingCount">
+                0 bookings
+            </span>
+
+        </div>
+
+
+        <!-- BOOKING LIST -->
+
+        <div
+            id="bookingContainer"
+            class="booking-list"
+        ></div>
+
+
+        <!-- EMPTY BOOKINGS -->
+
+        <div
+            id="emptyBookings"
+            class="empty-bookings"
+        >
+
+            <div class="empty-booking-icon">
+                ◫
+            </div>
+
+            <h3>
+                No bookings yet
+            </h3>
+
+            <p>
+                Your charging reservations will appear here.
+            </p>
+
+            <a
+                href="#stations"
+                class="secondary-button"
+            >
+                Find a charger
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         BOOKING MODAL
+    ========================================== -->
+
+    <div
+        id="bookingModal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="close-button"
+                onclick="closeBookingModal()"
+                type="button"
+                aria-label="Close booking form"
+            >
+                ×
+            </button>
+
+
+            <p class="eyebrow">
+                RESERVE YOUR CHARGER
+            </p>
+
+            <h2>
+                Book charging
+            </h2>
+
+            <p
+                id="selectedStation"
+                class="selected-station"
+            ></p>
+
+
+            <form id="bookingForm">
+
+                <input
+                    type="hidden"
+                    id="stationId"
+                >
+
+
+                <!-- NAME -->
+
+                <label for="userName">
+                    Full name
+                </label>
+
+                <input
+                    type="text"
+                    id="userName"
+                    required
+                    placeholder="Enter your name"
+                >
+
+
+                <!-- EMAIL -->
+
+                <label for="userEmail">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="userEmail"
+                    required
+                    placeholder="Enter your email"
+                >
+
+
+                <!-- DATE -->
+
+                <label for="bookingDate">
+                    Date
+                </label>
+
+                <input
+                    type="date"
+                    id="bookingDate"
+                    required
+                >
+
+
+                <!-- TIME -->
+
+                <label for="bookingTime">
+                    Time
+                </label>
+
+                <input
+                    type="time"
+                    id="bookingTime"
+                    required
+                >
+
+
+                <!-- VEHICLE MODEL -->
+
+                <label for="vehicleModel">
+                    Vehicle model
+                </label>
+
+                <input
+                    type="text"
+                    id="vehicleModel"
+                    required
+                    placeholder="Example: Tesla Model 3"
+                >
+
+
+                <!-- VEHICLE NUMBER -->
+
+                <label for="vehicleNumber">
+                    Vehicle number
+                </label>
+
+                <input
+                    type="text"
+                    id="vehicleNumber"
+                    required
+                    placeholder="Example: KA01AB1234"
+                >
+
+
+                <!-- FORM STATUS -->
+
+                <div
+                    id="bookingFormMessage"
+                    class="booking-form-message"
+                    aria-live="polite"
+                ></div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="primary-button full-button"
+                    id="confirmBookingButton"
+                >
+                    Confirm booking
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         STATION DETAILS MODAL
+    ========================================== -->
+
+    <div
+        id="stationDetailsModal"
+        class="modal"
+    >
+
+        <div class="modal-content station-details-modal">
+
+            <button
+                class="close-button"
+                type="button"
+                onclick="closeStationDetails()"
+                aria-label="Close station details"
+            >
+                ×
+            </button>
+
+
+            <p class="eyebrow">
+                CHARGING STATION
+            </p>
+
+
+            <h2 id="detailsStationName">
+                Station details
+            </h2>
+
+
+            <div
+                id="stationDetailsContent"
+                class="station-details-content"
+            ></div>
+
+
+            <button
+                type="button"
+                id="detailsBookButton"
+                class="primary-button full-button"
+            >
+                Book this station →
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         TOAST NOTIFICATION
+    ========================================== -->
+
+    <div
+        id="toast"
+        class="toast"
+        aria-live="polite"
+    ></div>
+
+<!-- =========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <div class="footer-logo">
+                VOLT<span>CHARGE</span>
+            </div>
+
+            <p>
+                Smart EV charging for a cleaner,
+                faster and more connected journey.
+            </p>
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#home">Home</a>
+            <a href="#stations">Stations</a>
+            <a href="#bookings">My Bookings</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 VoltCharge. All rights reserved.
+        </p>
+
+        <p>
+            Designed & Developed by <strong>Dhanush</strong>
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
